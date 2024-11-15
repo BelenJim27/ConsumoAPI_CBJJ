@@ -1,5 +1,5 @@
-##Proyecto: Consumo de API de Usuarios en Angular
-Este proyecto es una aplicación en Angular que consume una API pública de usuarios y muestra la información en una tabla con paginación, utilizando Angular Material. Ideal para entender cómo estructurar un proyecto en Angular con servicios y componentes.
+## Proyecto: Consumo de API de Usuarios en Angular
+Este proyecto es una aplicación en Angular que consume una API pública de usuarios y muestra la información en una tabla con paginación, utilizando Angular Material. 
 ### Tecnologías y Herramientas
 - Angular: Framework principal para el desarrollo de la aplicación.
 - Angular Material: Librería para componentes de interfaz de usuario, usada para la tabla y paginación.

@@ -5,10 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
-/**
- * Componente para mostrar una lista de usuarios en una tabla.
- * La lista de usuarios se obtiene del servicio `UserService`.
- */
+
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -18,27 +15,23 @@ import { PageEvent } from '@angular/material/paginator';
   providers: [UserService],
 })
 export class UserListComponent implements OnInit {
-  users: any[] = [];// Lista completa de usuarios
-  paginatedUsers: any[] = [];// Sublista de usuarios para la página actual
-  pageSize = 5;// Número de usuarios por página
-  pageIndex = 0;// Índice de la página actual
+  users: any[] = [];
+  paginatedUsers: any[] = [];
+  pageSize = 5;
+  pageIndex = 0;
 
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;// Referencia al paginador
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private userService: UserService) {}
-/**
-   * Se ejecuta al inicializar el componente y carga la lista de usuarios desde el servicio.
-   */
+ 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
       this.updatePaginatedUsers();
     });
   }
-/**
-   * Actualiza la lista `paginatedUsers` según la página y el tamaño seleccionados.
-   */
+
   updatePaginatedUsers() {
     const startIndex = this.pageIndex * this.pageSize;
     this.paginatedUsers = this.users.slice(startIndex, startIndex + this.pageSize);
