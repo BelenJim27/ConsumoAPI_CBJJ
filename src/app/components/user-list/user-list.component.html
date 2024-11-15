@@ -1,0 +1,45 @@
+<body class="body">
+  <div class="container mt-5">
+    <div class="table-container">
+      <h2>Lista de usuarios</h2>
+      <table mat-table [dataSource]="paginatedUsers">
+        
+        <!-- Columna ID -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+        </ng-container>
+        
+        <!-- Columna Nombre -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+        </ng-container>
+        
+        <!-- Columna Correo -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Correo</th>
+          <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+        </ng-container>
+        
+        <!-- Columna Rol -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Rol</th>
+          <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+        </ng-container>
+
+        <!-- Definición de filas y columnas -->
+        <tr mat-header-row *matHeaderRowDef="['id', 'name', 'email', 'role']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'email', 'role'];"></tr>
+      </table>
+
+      <!-- Paginador -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     [pageSize]="pageSize"
+                     [length]="users.length"
+                     (page)="onPageChange($event)"
+                     showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+</body>
